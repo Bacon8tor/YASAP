@@ -16,7 +16,10 @@ using System.Runtime.InteropServices;
 using MetroFramework;
 using MetroFramework.Controls;
 using System.Reflection;
-
+using CTrue.FsConnect.Managers;
+using System.IO;
+using System.Drawing.Text;
+using System.Threading;
 
 namespace YASAP
 {
@@ -41,7 +44,11 @@ namespace YASAP
         PlaneInfoResponse responses;
         bool labelsmade = false;
         List<SimVar> definition = new List<SimVar>();
-        
+        RadioManager radioManager;
+        WorldManager worldManager;
+        AutopilotManager autopilotManager;
+        System.Windows.Forms.Timer managerTimer;
+        PrivateFontCollection pfc;
         
         public enum Requests
         {
@@ -67,7 +74,7 @@ namespace YASAP
         {
 
             fillComboBoxes();
-            
+            loadFonts();
             
         }
 
@@ -79,8 +86,8 @@ namespace YASAP
             {
                 try
                 {
-                    ard_conn = EnhancedSerialConnection.Find();// "Hello?", "Arduino!");
-
+                     ard_conn = EnhancedSerialConnection.Find();// "Hello?", "Arduino!");
+                   
                 }
                 catch (System.IO.IOException ex)
                 {
@@ -427,10 +434,33 @@ namespace YASAP
                 statusSimConnect_label.Text = "Simulator Connected";
                 statusSimConnect_label.ForeColor = Color.Green;
                 GetSimVars();
-                
+                radioManager = new RadioManager(fsConnect);
+                worldManager = new WorldManager(fsConnect);
+                autopilotManager = new AutopilotManager(fsConnect);
+
+                simManager_mainTab.Visible = true;
+                time_time.ShowUpDown = true;
+                time_time.Format = DateTimePickerFormat.Time;
+              
 
             }
    
+        }
+
+
+
+        private void LoadManagers()
+        {
+
+            nav1Act_label.Text = String.Format("{0:0.00}", radioManager.Nav1ActiveFrequency);
+            nav1Stby_label.Text = String.Format("{0:0.00}",radioManager.Nav1StandbyFrequency); 
+            nav2Act_label.Text = String.Format("{0:0.00}", radioManager.Nav2ActiveFrequency); 
+            nav2Stby_label.Text = String.Format("{0:0.00}", radioManager.Nav2StandbyFrequency);
+            com1Act_label.Text = String.Format("{0:0.000}", radioManager.Com1ActiveFrequency);
+            com1Stby_label.Text = String.Format("{0:0.000}", radioManager.Com1StandbyFrequency);
+            com2Act_label.Text = String.Format("{0:0.000}", radioManager.Com2ActiveFrequency);
+            com2Stby_label.Text = String.Format("{0:0.000}", radioManager.Com2StandbyFrequency);
+
         }
 
         private void RegisterDefinitions()
@@ -465,10 +495,12 @@ namespace YASAP
             {
                 fsConnect.Disconnect();
                 timer1.Enabled = false;
+                timer1.Interval = 250;
                 fsConnect = null;
                 fsConnect_btn.Text = "Connect";
                 statusSimConnect_label.Text = "Simulator Not Connected";
                 statusSimConnect_label.ForeColor = Color.Black;
+                simManager_mainTab.Visible = false;
             }
         }
 
@@ -548,6 +580,7 @@ namespace YASAP
                 
                 
             }
+            
         }
 
         delegate void SetTextCallback(string name, string text);
@@ -584,6 +617,38 @@ namespace YASAP
 
         #region FORM
 
+        private void loadFonts()
+        {
+            //Create your private font collection object.
+            PrivateFontCollection pfc = new PrivateFontCollection();
+
+            //Select your font from the resources.
+            //My font here is "Digireu.ttf"
+            int fontLength = Properties.Resources.DS_DIGII.Length;
+
+            // create a buffer to read in to
+            byte[] fontdata = Properties.Resources.DS_DIGII;
+
+            // create an unsafe memory block for the font data
+            System.IntPtr data = Marshal.AllocCoTaskMem(fontLength);
+
+            // copy the bytes to the unsafe memory block
+            Marshal.Copy(fontdata, 0, data, fontLength);
+
+            // pass the font to the font collection
+            pfc.AddMemoryFont(data, fontLength);
+
+           nav1Act_label.Font = new Font(pfc.Families[0], nav1Act_label.Font.Size);
+            nav1Stby_label.Font = new Font(pfc.Families[0], nav1Act_label.Font.Size);
+            nav2Act_label.Font = new Font(pfc.Families[0], nav1Act_label.Font.Size);
+            nav2Stby_label.Font = new Font(pfc.Families[0], nav1Act_label.Font.Size);
+
+            com1Act_label.Font = new Font(pfc.Families[0], nav1Act_label.Font.Size);
+            com1Stby_label.Font = new Font(pfc.Families[0], nav1Act_label.Font.Size);
+            com2Act_label.Font = new Font(pfc.Families[0], nav1Act_label.Font.Size);
+            com2Stby_label.Font = new Font(pfc.Families[0], nav1Act_label.Font.Size);
+        }
+    
         private void ChangeBtnText(string text,MetroButton btn)
         {
             btn.Text = text;
@@ -596,7 +661,16 @@ namespace YASAP
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            fsConnect.RequestData((int)Requests.PlaneInfoRequest, planeInfoDefinitionId);
+            try
+            {
+                fsConnect.RequestData((int)Requests.PlaneInfoRequest, planeInfoDefinitionId);
+                radioManager.Update();
+               // autopilotManager.Update();
+                LoadManagers();
+            } catch (TimeoutException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
         }
 
         private void fsConnect_btn_Click(object sender, EventArgs e)
@@ -662,7 +736,17 @@ namespace YASAP
 
             mp.Controls.Add(lb);
         }
+        private void addLabel(string text, string name, MetroPanel mp, DockStyle ds = DockStyle.None)
+        {
+            MetroLabel lb = new MetroLabel();
+            lb.Text = text;
+            lb.AutoSize = true;
+            lb.Dock = ds;
+            lb.StyleManager = msm;
+            lb.Name = name;
 
+            mp.Controls.Add(lb);
+        }
         private void updateLabelText(MetroLabel label, string text, bool visibility = true)
         {
             label.Text = text;
@@ -670,7 +754,9 @@ namespace YASAP
         }
         private void searchArduino_button_Click(object sender, EventArgs e)
         {
-            ConnectArduino();
+            
+                ConnectArduino();
+    
         }
 
         #endregion
@@ -717,6 +803,84 @@ namespace YASAP
 
         #endregion
 
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            if (worldManager != null)
+            {
+                DateTime myTime = new DateTime();
+                
+                myTime = worldDateTime_date.Value.Date + time_time.Value.TimeOfDay;
+                myTime.ToLocalTime();
+                worldManager.SetTime(myTime);
+            }
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void metroButton2_Click_1(object sender, EventArgs e)
+        {
+            radioManager.Nav1Swap();
+        }
+
+        private void metroButton4_Click(object sender, EventArgs e)
+        {
+            radioManager.Nav2Swap();
+        }
+
+        private void metroButton3_Click(object sender, EventArgs e)
+        {
+            radioManager.Com1Swap();
+
+        }
+
+        private void metroButton5_Click(object sender, EventArgs e)
+        {
+            radioManager.Com2Swap();
+        }
+
+        private void metroButton6_Click(object sender, EventArgs e)
+        {
+
+            radioManager.SetNav1StandbyFrequency(radioManager.Nav1StandbyFrequency + 0.05);
+        }
+
+        private void nav1Dn_btn_Click(object sender, EventArgs e)
+        {
+            radioManager.SetNav1StandbyFrequency(radioManager.Nav1StandbyFrequency - 0.05);
+        }
+
+        private void nav2UP_btn_Click(object sender, EventArgs e)
+        {
+            radioManager.SetNav2StandbyFrequency(radioManager.Nav2StandbyFrequency + 0.05);
+        }
+
+        private void nav2Dn_btn_Click(object sender, EventArgs e)
+        {
+            radioManager.SetNav2StandbyFrequency(radioManager.Nav2StandbyFrequency - 0.05);
+        }
+
+        private void com1UP_btn_Click(object sender, EventArgs e)
+        {
+            radioManager.SetCom1StandbyFrequency(radioManager.Com1StandbyFrequency + 0.005);
+        }
+
+        private void com1Dn_btn_Click(object sender, EventArgs e)
+        {
+            radioManager.SetCom1StandbyFrequency(radioManager.Com1StandbyFrequency - 0.005);
+        }
+
+        private void com2Up_btn_Click(object sender, EventArgs e)
+        {
+            radioManager.SetCom2StandbyFrequency(radioManager.Com2StandbyFrequency + 0.005);
+        }
+
+        private void Com2Dn_btn_Click(object sender, EventArgs e)
+        {
+            radioManager.SetCom2StandbyFrequency(radioManager.Com2StandbyFrequency - 0.005);
+        }
     }
 
 

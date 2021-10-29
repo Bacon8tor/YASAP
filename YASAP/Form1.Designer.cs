@@ -30,11 +30,48 @@ namespace YASAP
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.msm = new MetroFramework.Components.MetroStyleManager(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.main_tabControl = new MetroFramework.Controls.MetroTabControl();
             this.simConnect_tab = new MetroFramework.Controls.MetroTabPage();
-            this.simConnect_panel = new System.Windows.Forms.FlowLayoutPanel();
+            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.simConnect_panel = new MetroFramework.Controls.MetroPanel();
+            this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
+            this.simManager_mainTab = new MetroFramework.Controls.MetroTabControl();
+            this.worldManager_tab = new MetroFramework.Controls.MetroTabPage();
+            this.time_time = new System.Windows.Forms.DateTimePicker();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.worldDateTime_date = new MetroFramework.Controls.MetroDateTime();
+            this.radioManager_tab = new MetroFramework.Controls.MetroTabPage();
+            this.metroPanel5 = new MetroFramework.Controls.MetroPanel();
+            this.Com2Dn_btn = new MetroFramework.Controls.MetroButton();
+            this.com2Up_btn = new MetroFramework.Controls.MetroButton();
+            this.com1Dn_btn = new MetroFramework.Controls.MetroButton();
+            this.com1UP_btn = new MetroFramework.Controls.MetroButton();
+            this.metroButton5 = new MetroFramework.Controls.MetroButton();
+            this.metroButton3 = new MetroFramework.Controls.MetroButton();
+            this.com2Stby_label = new System.Windows.Forms.Label();
+            this.com2Act_label = new System.Windows.Forms.Label();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.com1Stby_label = new System.Windows.Forms.Label();
+            this.com1Act_label = new System.Windows.Forms.Label();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
+            this.nav2Dn_btn = new MetroFramework.Controls.MetroButton();
+            this.nav2UP_btn = new MetroFramework.Controls.MetroButton();
+            this.nav1Dn_btn = new MetroFramework.Controls.MetroButton();
+            this.nav1Up_btn = new MetroFramework.Controls.MetroButton();
+            this.metroButton4 = new MetroFramework.Controls.MetroButton();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.nav2Stby_label = new System.Windows.Forms.Label();
+            this.nav2Act_label = new System.Windows.Forms.Label();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.nav1Stby_label = new System.Windows.Forms.Label();
+            this.nav1Act_label = new System.Windows.Forms.Label();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.autopilotmanager_tab = new MetroFramework.Controls.MetroTabPage();
             this.simConnectInfo_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.fsConnect_btn = new MetroFramework.Controls.MetroButton();
             this.simVar_ComboBox = new MetroFramework.Controls.MetroComboBox();
@@ -69,6 +106,13 @@ namespace YASAP
             ((System.ComponentModel.ISupportInitialize)(this.msm)).BeginInit();
             this.main_tabControl.SuspendLayout();
             this.simConnect_tab.SuspendLayout();
+            this.metroPanel2.SuspendLayout();
+            this.metroPanel3.SuspendLayout();
+            this.simManager_mainTab.SuspendLayout();
+            this.worldManager_tab.SuspendLayout();
+            this.radioManager_tab.SuspendLayout();
+            this.metroPanel5.SuspendLayout();
+            this.metroPanel4.SuspendLayout();
             this.simConnectInfo_panel.SuspendLayout();
             this.vJoy_tab.SuspendLayout();
             this.vJoyInfo_panel.SuspendLayout();
@@ -104,7 +148,7 @@ namespace YASAP
             // 
             // simConnect_tab
             // 
-            this.simConnect_tab.Controls.Add(this.simConnect_panel);
+            this.simConnect_tab.Controls.Add(this.metroPanel2);
             this.simConnect_tab.Controls.Add(this.simConnectInfo_panel);
             this.simConnect_tab.HorizontalScrollbarBarColor = false;
             this.simConnect_tab.HorizontalScrollbarHighlightOnWheel = false;
@@ -118,15 +162,468 @@ namespace YASAP
             this.simConnect_tab.VerticalScrollbarHighlightOnWheel = false;
             this.simConnect_tab.VerticalScrollbarSize = 0;
             // 
+            // metroPanel2
+            // 
+            this.metroPanel2.Controls.Add(this.simConnect_panel);
+            this.metroPanel2.Controls.Add(this.metroPanel3);
+            this.metroPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            this.metroPanel2.Location = new System.Drawing.Point(203, 0);
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.Size = new System.Drawing.Size(592, 417);
+            this.metroPanel2.TabIndex = 6;
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
             // simConnect_panel
             // 
-            this.simConnect_panel.BackColor = System.Drawing.Color.Transparent;
             this.simConnect_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.simConnect_panel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.simConnect_panel.Location = new System.Drawing.Point(203, 0);
+            this.simConnect_panel.HorizontalScrollbarBarColor = true;
+            this.simConnect_panel.HorizontalScrollbarHighlightOnWheel = false;
+            this.simConnect_panel.HorizontalScrollbarSize = 10;
+            this.simConnect_panel.Location = new System.Drawing.Point(423, 0);
             this.simConnect_panel.Name = "simConnect_panel";
-            this.simConnect_panel.Size = new System.Drawing.Size(592, 417);
-            this.simConnect_panel.TabIndex = 5;
+            this.simConnect_panel.Size = new System.Drawing.Size(169, 417);
+            this.simConnect_panel.TabIndex = 7;
+            this.simConnect_panel.VerticalScrollbarBarColor = true;
+            this.simConnect_panel.VerticalScrollbarHighlightOnWheel = false;
+            this.simConnect_panel.VerticalScrollbarSize = 10;
+            // 
+            // metroPanel3
+            // 
+            this.metroPanel3.Controls.Add(this.simManager_mainTab);
+            this.metroPanel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.metroPanel3.HorizontalScrollbarBarColor = true;
+            this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel3.HorizontalScrollbarSize = 10;
+            this.metroPanel3.Location = new System.Drawing.Point(0, 0);
+            this.metroPanel3.Name = "metroPanel3";
+            this.metroPanel3.Size = new System.Drawing.Size(423, 417);
+            this.metroPanel3.TabIndex = 6;
+            this.metroPanel3.VerticalScrollbarBarColor = true;
+            this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel3.VerticalScrollbarSize = 10;
+            // 
+            // simManager_mainTab
+            // 
+            this.simManager_mainTab.Controls.Add(this.worldManager_tab);
+            this.simManager_mainTab.Controls.Add(this.radioManager_tab);
+            this.simManager_mainTab.Controls.Add(this.autopilotmanager_tab);
+            this.simManager_mainTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.simManager_mainTab.Location = new System.Drawing.Point(0, 0);
+            this.simManager_mainTab.Name = "simManager_mainTab";
+            this.simManager_mainTab.SelectedIndex = 1;
+            this.simManager_mainTab.Size = new System.Drawing.Size(423, 417);
+            this.simManager_mainTab.TabIndex = 2;
+            this.simManager_mainTab.UseSelectable = true;
+            this.simManager_mainTab.Visible = false;
+            // 
+            // worldManager_tab
+            // 
+            this.worldManager_tab.Controls.Add(this.time_time);
+            this.worldManager_tab.Controls.Add(this.metroButton1);
+            this.worldManager_tab.Controls.Add(this.metroLabel4);
+            this.worldManager_tab.Controls.Add(this.worldDateTime_date);
+            this.worldManager_tab.HorizontalScrollbarBarColor = true;
+            this.worldManager_tab.HorizontalScrollbarHighlightOnWheel = false;
+            this.worldManager_tab.HorizontalScrollbarSize = 10;
+            this.worldManager_tab.Location = new System.Drawing.Point(4, 38);
+            this.worldManager_tab.Name = "worldManager_tab";
+            this.worldManager_tab.Size = new System.Drawing.Size(415, 375);
+            this.worldManager_tab.TabIndex = 0;
+            this.worldManager_tab.Text = "World Manager";
+            this.worldManager_tab.VerticalScrollbarBarColor = true;
+            this.worldManager_tab.VerticalScrollbarHighlightOnWheel = false;
+            this.worldManager_tab.VerticalScrollbarSize = 10;
+            // 
+            // time_time
+            // 
+            this.time_time.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.time_time.Location = new System.Drawing.Point(3, 136);
+            this.time_time.Name = "time_time";
+            this.time_time.ShowUpDown = true;
+            this.time_time.Size = new System.Drawing.Size(200, 20);
+            this.time_time.TabIndex = 6;
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(3, 167);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(124, 23);
+            this.metroButton1.TabIndex = 4;
+            this.metroButton1.Text = "Set Time in Sim";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(3, 79);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(100, 19);
+            this.metroLabel4.TabIndex = 3;
+            this.metroLabel4.Text = "Set World Time";
+            // 
+            // worldDateTime_date
+            // 
+            this.worldDateTime_date.Location = new System.Drawing.Point(3, 101);
+            this.worldDateTime_date.MinimumSize = new System.Drawing.Size(4, 29);
+            this.worldDateTime_date.Name = "worldDateTime_date";
+            this.worldDateTime_date.Size = new System.Drawing.Size(200, 29);
+            this.worldDateTime_date.TabIndex = 2;
+            // 
+            // radioManager_tab
+            // 
+            this.radioManager_tab.Controls.Add(this.metroPanel5);
+            this.radioManager_tab.Controls.Add(this.metroPanel4);
+            this.radioManager_tab.HorizontalScrollbarBarColor = true;
+            this.radioManager_tab.HorizontalScrollbarHighlightOnWheel = false;
+            this.radioManager_tab.HorizontalScrollbarSize = 10;
+            this.radioManager_tab.Location = new System.Drawing.Point(4, 38);
+            this.radioManager_tab.Name = "radioManager_tab";
+            this.radioManager_tab.Size = new System.Drawing.Size(415, 375);
+            this.radioManager_tab.TabIndex = 1;
+            this.radioManager_tab.Text = "Radio Manager";
+            this.radioManager_tab.VerticalScrollbarBarColor = true;
+            this.radioManager_tab.VerticalScrollbarHighlightOnWheel = false;
+            this.radioManager_tab.VerticalScrollbarSize = 10;
+            // 
+            // metroPanel5
+            // 
+            this.metroPanel5.Controls.Add(this.Com2Dn_btn);
+            this.metroPanel5.Controls.Add(this.com2Up_btn);
+            this.metroPanel5.Controls.Add(this.com1Dn_btn);
+            this.metroPanel5.Controls.Add(this.com1UP_btn);
+            this.metroPanel5.Controls.Add(this.metroButton5);
+            this.metroPanel5.Controls.Add(this.metroButton3);
+            this.metroPanel5.Controls.Add(this.com2Stby_label);
+            this.metroPanel5.Controls.Add(this.com2Act_label);
+            this.metroPanel5.Controls.Add(this.metroLabel7);
+            this.metroPanel5.Controls.Add(this.com1Stby_label);
+            this.metroPanel5.Controls.Add(this.com1Act_label);
+            this.metroPanel5.Controls.Add(this.metroLabel8);
+            this.metroPanel5.HorizontalScrollbarBarColor = true;
+            this.metroPanel5.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel5.HorizontalScrollbarSize = 10;
+            this.metroPanel5.Location = new System.Drawing.Point(3, 100);
+            this.metroPanel5.Name = "metroPanel5";
+            this.metroPanel5.Size = new System.Drawing.Size(409, 81);
+            this.metroPanel5.TabIndex = 9;
+            this.metroPanel5.VerticalScrollbarBarColor = true;
+            this.metroPanel5.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel5.VerticalScrollbarSize = 10;
+            // 
+            // Com2Dn_btn
+            // 
+            this.Com2Dn_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Com2Dn_btn.BackgroundImage")));
+            this.Com2Dn_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Com2Dn_btn.Location = new System.Drawing.Point(376, 40);
+            this.Com2Dn_btn.Name = "Com2Dn_btn";
+            this.Com2Dn_btn.Size = new System.Drawing.Size(30, 20);
+            this.Com2Dn_btn.TabIndex = 16;
+            this.Com2Dn_btn.UseSelectable = true;
+            this.Com2Dn_btn.Click += new System.EventHandler(this.Com2Dn_btn_Click);
+            // 
+            // com2Up_btn
+            // 
+            this.com2Up_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("com2Up_btn.BackgroundImage")));
+            this.com2Up_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.com2Up_btn.Location = new System.Drawing.Point(376, 14);
+            this.com2Up_btn.Name = "com2Up_btn";
+            this.com2Up_btn.Size = new System.Drawing.Size(30, 19);
+            this.com2Up_btn.TabIndex = 15;
+            this.com2Up_btn.UseSelectable = true;
+            this.com2Up_btn.Click += new System.EventHandler(this.com2Up_btn_Click);
+            // 
+            // com1Dn_btn
+            // 
+            this.com1Dn_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("com1Dn_btn.BackgroundImage")));
+            this.com1Dn_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.com1Dn_btn.Location = new System.Drawing.Point(172, 40);
+            this.com1Dn_btn.Name = "com1Dn_btn";
+            this.com1Dn_btn.Size = new System.Drawing.Size(30, 20);
+            this.com1Dn_btn.TabIndex = 14;
+            this.com1Dn_btn.UseSelectable = true;
+            this.com1Dn_btn.Click += new System.EventHandler(this.com1Dn_btn_Click);
+            // 
+            // com1UP_btn
+            // 
+            this.com1UP_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("com1UP_btn.BackgroundImage")));
+            this.com1UP_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.com1UP_btn.Location = new System.Drawing.Point(172, 14);
+            this.com1UP_btn.Name = "com1UP_btn";
+            this.com1UP_btn.Size = new System.Drawing.Size(30, 19);
+            this.com1UP_btn.TabIndex = 13;
+            this.com1UP_btn.UseSelectable = true;
+            this.com1UP_btn.Click += new System.EventHandler(this.com1UP_btn_Click);
+            // 
+            // metroButton5
+            // 
+            this.metroButton5.Location = new System.Drawing.Point(237, 55);
+            this.metroButton5.Name = "metroButton5";
+            this.metroButton5.Size = new System.Drawing.Size(92, 23);
+            this.metroButton5.TabIndex = 11;
+            this.metroButton5.Text = "Swap COMM 2";
+            this.metroButton5.UseSelectable = true;
+            this.metroButton5.Click += new System.EventHandler(this.metroButton5_Click);
+            // 
+            // metroButton3
+            // 
+            this.metroButton3.Location = new System.Drawing.Point(31, 53);
+            this.metroButton3.Name = "metroButton3";
+            this.metroButton3.Size = new System.Drawing.Size(92, 23);
+            this.metroButton3.TabIndex = 10;
+            this.metroButton3.Text = "Swap COMM 1";
+            this.metroButton3.UseSelectable = true;
+            this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click);
+            // 
+            // com2Stby_label
+            // 
+            this.com2Stby_label.AutoSize = true;
+            this.com2Stby_label.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.com2Stby_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.com2Stby_label.ForeColor = System.Drawing.Color.OrangeRed;
+            this.com2Stby_label.Location = new System.Drawing.Point(317, 21);
+            this.com2Stby_label.Name = "com2Stby_label";
+            this.com2Stby_label.Size = new System.Drawing.Size(53, 29);
+            this.com2Stby_label.TabIndex = 8;
+            this.com2Stby_label.Text = "N/A";
+            this.com2Stby_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // com2Act_label
+            // 
+            this.com2Act_label.AutoSize = true;
+            this.com2Act_label.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.com2Act_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.com2Act_label.ForeColor = System.Drawing.Color.OrangeRed;
+            this.com2Act_label.Location = new System.Drawing.Point(209, 21);
+            this.com2Act_label.Name = "com2Act_label";
+            this.com2Act_label.Size = new System.Drawing.Size(53, 29);
+            this.com2Act_label.TabIndex = 7;
+            this.com2Act_label.Text = "N/A";
+            this.com2Act_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(272, 0);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(57, 19);
+            this.metroLabel7.TabIndex = 6;
+            this.metroLabel7.Text = "Comm2";
+            // 
+            // com1Stby_label
+            // 
+            this.com1Stby_label.AutoSize = true;
+            this.com1Stby_label.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.com1Stby_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.com1Stby_label.ForeColor = System.Drawing.Color.OrangeRed;
+            this.com1Stby_label.Location = new System.Drawing.Point(113, 21);
+            this.com1Stby_label.Name = "com1Stby_label";
+            this.com1Stby_label.Size = new System.Drawing.Size(53, 29);
+            this.com1Stby_label.TabIndex = 5;
+            this.com1Stby_label.Text = "N/A";
+            this.com1Stby_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // com1Act_label
+            // 
+            this.com1Act_label.AutoSize = true;
+            this.com1Act_label.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.com1Act_label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.com1Act_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.com1Act_label.ForeColor = System.Drawing.Color.OrangeRed;
+            this.com1Act_label.Location = new System.Drawing.Point(5, 21);
+            this.com1Act_label.Name = "com1Act_label";
+            this.com1Act_label.Size = new System.Drawing.Size(53, 29);
+            this.com1Act_label.TabIndex = 4;
+            this.com1Act_label.Text = "N/A";
+            this.com1Act_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.Location = new System.Drawing.Point(68, 0);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(55, 19);
+            this.metroLabel8.TabIndex = 2;
+            this.metroLabel8.Text = "Comm1";
+            // 
+            // metroPanel4
+            // 
+            this.metroPanel4.Controls.Add(this.nav2Dn_btn);
+            this.metroPanel4.Controls.Add(this.nav2UP_btn);
+            this.metroPanel4.Controls.Add(this.nav1Dn_btn);
+            this.metroPanel4.Controls.Add(this.nav1Up_btn);
+            this.metroPanel4.Controls.Add(this.metroButton4);
+            this.metroPanel4.Controls.Add(this.metroButton2);
+            this.metroPanel4.Controls.Add(this.nav2Stby_label);
+            this.metroPanel4.Controls.Add(this.nav2Act_label);
+            this.metroPanel4.Controls.Add(this.metroLabel6);
+            this.metroPanel4.Controls.Add(this.nav1Stby_label);
+            this.metroPanel4.Controls.Add(this.nav1Act_label);
+            this.metroPanel4.Controls.Add(this.metroLabel5);
+            this.metroPanel4.HorizontalScrollbarBarColor = true;
+            this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel4.HorizontalScrollbarSize = 10;
+            this.metroPanel4.Location = new System.Drawing.Point(3, 7);
+            this.metroPanel4.Name = "metroPanel4";
+            this.metroPanel4.Size = new System.Drawing.Size(409, 87);
+            this.metroPanel4.TabIndex = 2;
+            this.metroPanel4.VerticalScrollbarBarColor = true;
+            this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel4.VerticalScrollbarSize = 10;
+            // 
+            // nav2Dn_btn
+            // 
+            this.nav2Dn_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("nav2Dn_btn.BackgroundImage")));
+            this.nav2Dn_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.nav2Dn_btn.Location = new System.Drawing.Point(376, 47);
+            this.nav2Dn_btn.Name = "nav2Dn_btn";
+            this.nav2Dn_btn.Size = new System.Drawing.Size(30, 20);
+            this.nav2Dn_btn.TabIndex = 14;
+            this.nav2Dn_btn.UseSelectable = true;
+            this.nav2Dn_btn.Click += new System.EventHandler(this.nav2Dn_btn_Click);
+            // 
+            // nav2UP_btn
+            // 
+            this.nav2UP_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("nav2UP_btn.BackgroundImage")));
+            this.nav2UP_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.nav2UP_btn.Location = new System.Drawing.Point(376, 21);
+            this.nav2UP_btn.Name = "nav2UP_btn";
+            this.nav2UP_btn.Size = new System.Drawing.Size(30, 19);
+            this.nav2UP_btn.TabIndex = 13;
+            this.nav2UP_btn.UseSelectable = true;
+            this.nav2UP_btn.Click += new System.EventHandler(this.nav2UP_btn_Click);
+            // 
+            // nav1Dn_btn
+            // 
+            this.nav1Dn_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("nav1Dn_btn.BackgroundImage")));
+            this.nav1Dn_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.nav1Dn_btn.Location = new System.Drawing.Point(173, 47);
+            this.nav1Dn_btn.Name = "nav1Dn_btn";
+            this.nav1Dn_btn.Size = new System.Drawing.Size(30, 20);
+            this.nav1Dn_btn.TabIndex = 12;
+            this.nav1Dn_btn.UseSelectable = true;
+            this.nav1Dn_btn.Click += new System.EventHandler(this.nav1Dn_btn_Click);
+            // 
+            // nav1Up_btn
+            // 
+            this.nav1Up_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("nav1Up_btn.BackgroundImage")));
+            this.nav1Up_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.nav1Up_btn.Location = new System.Drawing.Point(173, 21);
+            this.nav1Up_btn.Name = "nav1Up_btn";
+            this.nav1Up_btn.Size = new System.Drawing.Size(30, 19);
+            this.nav1Up_btn.TabIndex = 11;
+            this.nav1Up_btn.UseSelectable = true;
+            this.nav1Up_btn.Click += new System.EventHandler(this.metroButton6_Click);
+            // 
+            // metroButton4
+            // 
+            this.metroButton4.Location = new System.Drawing.Point(254, 61);
+            this.metroButton4.Name = "metroButton4";
+            this.metroButton4.Size = new System.Drawing.Size(75, 23);
+            this.metroButton4.TabIndex = 10;
+            this.metroButton4.Text = "Swap Nav 2";
+            this.metroButton4.UseSelectable = true;
+            this.metroButton4.Click += new System.EventHandler(this.metroButton4_Click);
+            // 
+            // metroButton2
+            // 
+            this.metroButton2.Location = new System.Drawing.Point(48, 61);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(75, 23);
+            this.metroButton2.TabIndex = 9;
+            this.metroButton2.Text = "Swap Nav 1";
+            this.metroButton2.UseSelectable = true;
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click_1);
+            // 
+            // nav2Stby_label
+            // 
+            this.nav2Stby_label.AutoSize = true;
+            this.nav2Stby_label.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.nav2Stby_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nav2Stby_label.ForeColor = System.Drawing.Color.OrangeRed;
+            this.nav2Stby_label.Location = new System.Drawing.Point(317, 21);
+            this.nav2Stby_label.Name = "nav2Stby_label";
+            this.nav2Stby_label.Size = new System.Drawing.Size(53, 29);
+            this.nav2Stby_label.TabIndex = 8;
+            this.nav2Stby_label.Text = "N/A";
+            this.nav2Stby_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // nav2Act_label
+            // 
+            this.nav2Act_label.AutoSize = true;
+            this.nav2Act_label.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.nav2Act_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nav2Act_label.ForeColor = System.Drawing.Color.OrangeRed;
+            this.nav2Act_label.Location = new System.Drawing.Point(209, 21);
+            this.nav2Act_label.Name = "nav2Act_label";
+            this.nav2Act_label.Size = new System.Drawing.Size(53, 29);
+            this.nav2Act_label.TabIndex = 7;
+            this.nav2Act_label.Text = "N/A";
+            this.nav2Act_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.Location = new System.Drawing.Point(272, 0);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(39, 19);
+            this.metroLabel6.TabIndex = 6;
+            this.metroLabel6.Text = "Nav2";
+            // 
+            // nav1Stby_label
+            // 
+            this.nav1Stby_label.AutoSize = true;
+            this.nav1Stby_label.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.nav1Stby_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nav1Stby_label.ForeColor = System.Drawing.Color.OrangeRed;
+            this.nav1Stby_label.Location = new System.Drawing.Point(113, 21);
+            this.nav1Stby_label.Name = "nav1Stby_label";
+            this.nav1Stby_label.Size = new System.Drawing.Size(53, 29);
+            this.nav1Stby_label.TabIndex = 5;
+            this.nav1Stby_label.Text = "N/A";
+            this.nav1Stby_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // nav1Act_label
+            // 
+            this.nav1Act_label.AutoSize = true;
+            this.nav1Act_label.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.nav1Act_label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nav1Act_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nav1Act_label.ForeColor = System.Drawing.Color.OrangeRed;
+            this.nav1Act_label.Location = new System.Drawing.Point(15, 21);
+            this.nav1Act_label.Name = "nav1Act_label";
+            this.nav1Act_label.Size = new System.Drawing.Size(53, 29);
+            this.nav1Act_label.TabIndex = 4;
+            this.nav1Act_label.Text = "N/A";
+            this.nav1Act_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(68, 0);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel5.TabIndex = 2;
+            this.metroLabel5.Text = "Nav1";
+            // 
+            // autopilotmanager_tab
+            // 
+            this.autopilotmanager_tab.HorizontalScrollbarBarColor = true;
+            this.autopilotmanager_tab.HorizontalScrollbarHighlightOnWheel = false;
+            this.autopilotmanager_tab.HorizontalScrollbarSize = 10;
+            this.autopilotmanager_tab.Location = new System.Drawing.Point(4, 38);
+            this.autopilotmanager_tab.Name = "autopilotmanager_tab";
+            this.autopilotmanager_tab.Size = new System.Drawing.Size(415, 375);
+            this.autopilotmanager_tab.TabIndex = 2;
+            this.autopilotmanager_tab.Text = "AutoPilot Manager";
+            this.autopilotmanager_tab.VerticalScrollbarBarColor = true;
+            this.autopilotmanager_tab.VerticalScrollbarHighlightOnWheel = false;
+            this.autopilotmanager_tab.VerticalScrollbarSize = 10;
             // 
             // simConnectInfo_panel
             // 
@@ -484,6 +981,16 @@ namespace YASAP
             ((System.ComponentModel.ISupportInitialize)(this.msm)).EndInit();
             this.main_tabControl.ResumeLayout(false);
             this.simConnect_tab.ResumeLayout(false);
+            this.metroPanel2.ResumeLayout(false);
+            this.metroPanel3.ResumeLayout(false);
+            this.simManager_mainTab.ResumeLayout(false);
+            this.worldManager_tab.ResumeLayout(false);
+            this.worldManager_tab.PerformLayout();
+            this.radioManager_tab.ResumeLayout(false);
+            this.metroPanel5.ResumeLayout(false);
+            this.metroPanel5.PerformLayout();
+            this.metroPanel4.ResumeLayout(false);
+            this.metroPanel4.PerformLayout();
             this.simConnectInfo_panel.ResumeLayout(false);
             this.vJoy_tab.ResumeLayout(false);
             this.vJoyInfo_panel.ResumeLayout(false);
@@ -521,7 +1028,6 @@ namespace YASAP
         private MetroFramework.Controls.MetroLabel firmataVersion_label;
         private MetroFramework.Controls.MetroLabel firmataBaud_label;
         private MetroFramework.Controls.MetroLabel ardBoard_label;
-        private System.Windows.Forms.FlowLayoutPanel simConnect_panel;
         private System.Windows.Forms.FlowLayoutPanel simConnectInfo_panel;
         private MetroFramework.Controls.MetroTabPage settings_tab;
         private MetroFramework.Controls.MetroPanel metroPanel1;
@@ -539,5 +1045,42 @@ namespace YASAP
         private MetroFramework.Controls.MetroComboBox simVarDataType_combo;
         private MetroFramework.Controls.MetroComboBox simVarUnits_combo;
         private MetroFramework.Controls.MetroButton registerVars_button;
+        private MetroFramework.Controls.MetroPanel metroPanel2;
+        private MetroFramework.Controls.MetroPanel simConnect_panel;
+        private MetroFramework.Controls.MetroPanel metroPanel3;
+        private MetroFramework.Controls.MetroTabControl simManager_mainTab;
+        private MetroFramework.Controls.MetroTabPage worldManager_tab;
+        private MetroFramework.Controls.MetroTabPage radioManager_tab;
+        private MetroFramework.Controls.MetroTabPage autopilotmanager_tab;
+        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroDateTime worldDateTime_date;
+        private MetroFramework.Controls.MetroPanel metroPanel4;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private System.Windows.Forms.Label nav1Act_label;
+        private System.Windows.Forms.DateTimePicker time_time;
+        private System.Windows.Forms.Label nav1Stby_label;
+        private System.Windows.Forms.Label nav2Stby_label;
+        private System.Windows.Forms.Label nav2Act_label;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroPanel metroPanel5;
+        private System.Windows.Forms.Label com2Stby_label;
+        private System.Windows.Forms.Label com2Act_label;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private System.Windows.Forms.Label com1Stby_label;
+        private System.Windows.Forms.Label com1Act_label;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private MetroFramework.Controls.MetroButton metroButton3;
+        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroButton metroButton4;
+        private MetroFramework.Controls.MetroButton metroButton5;
+        private MetroFramework.Controls.MetroButton nav1Dn_btn;
+        private MetroFramework.Controls.MetroButton nav1Up_btn;
+        private MetroFramework.Controls.MetroButton Com2Dn_btn;
+        private MetroFramework.Controls.MetroButton com2Up_btn;
+        private MetroFramework.Controls.MetroButton com1Dn_btn;
+        private MetroFramework.Controls.MetroButton com1UP_btn;
+        private MetroFramework.Controls.MetroButton nav2Dn_btn;
+        private MetroFramework.Controls.MetroButton nav2UP_btn;
     }
 }

@@ -44,3 +44,6 @@ E:\Nextcloud\Documents\Projects\YASAP\YASAP-GIT\YASAP\YASAP\obj\x64\Debug\YASAP.
 E:\Nextcloud\Documents\Projects\YASAP\YASAP-GIT\YASAP\YASAP\obj\x64\Debug\YASAP.csproj.CoreCompileInputs.cache
 E:\Nextcloud\Documents\Projects\YASAP\YASAP-GIT\YASAP\YASAP\obj\x64\Debug\YASAP.exe
 E:\Nextcloud\Documents\Projects\YASAP\YASAP-GIT\YASAP\YASAP\obj\x64\Debug\YASAP.pdb
+E:\Nextcloud\Documents\Projects\YASAP\YASAP-GIT\YASAP\YASAP\bin\x64\Debug\CTrue.FsConnect.Managers.dll
+E:\Nextcloud\Documents\Projects\YASAP\YASAP-GIT\YASAP\YASAP\bin\x64\Debug\CTrue.FsConnect.Managers.xml
+E:\Nextcloud\Documents\Projects\YASAP\YASAP-GIT\YASAP\YASAP\obj\x64\Debug\YASAP.Properties.Resources.resources

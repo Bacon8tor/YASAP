@@ -1,0 +1,448 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CTrue.FsConnect.Managers</name>
+    </assembly>
+    <members>
+        <member name="T:CTrue.FsConnect.Managers.RequestMethod">
+            <summary>
+            Specifies how to request data from MSFS.
+            </summary>
+        </member>
+        <member name="T:CTrue.FsConnect.Managers.IAircraftManager`1">
+            <summary>
+            The <see cref="T:CTrue.FsConnect.Managers.AircraftManager`1"/> is a simple way to request information about the user aircraft.
+            </summary>
+            <typeparam name="T">The type that represents the aircraft information that will be requested.</typeparam>
+            <remarks>
+            The type used to represent aircraft information must already be registered with SimConnect using <see cref="T:CTrue.FsConnect.FsConnect"/>.
+            <see cref="T:CTrue.FsConnect.FsConnect"/> must already be connected before using this manager.
+            </remarks>
+        </member>
+        <member name="E:CTrue.FsConnect.Managers.IAircraftManager`1.Updated">
+            <summary>
+            The <see cref="E:CTrue.FsConnect.Managers.IAircraftManager`1.Updated"/> event is raised when the aircraft info is updated.
+            </summary>
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.IAircraftManager`1.RequestMethod">
+            <summary>
+            Gets or sets whether to poll the flight simulator manually, using the <see cref="M:CTrue.FsConnect.Managers.IAircraftManager`1.Get"/> method, or getting automatic updates using the <see cref="E:CTrue.FsConnect.Managers.IAircraftManager`1.Updated"/> event.
+            </summary>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.IAircraftManager`1.Get">
+            <summary>
+            Gets the latest aircraft info, either by polling or the latest value returned by automatically received updates.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CTrue.FsConnect.Managers.AircraftManager`1">
+            <inheritdoc />
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.AircraftManager`1.RequestMethod">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.AircraftManager`1.#ctor(CTrue.FsConnect.IFsConnect,System.Int32)">
+            <summary>
+            Creates an instance of the <see cref="T:CTrue.FsConnect.Managers.AircraftManager`1"/> class.
+            </summary>
+            <param name="fsConnect"></param>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.AircraftManager`1.#ctor(CTrue.FsConnect.IFsConnect,System.Int32,System.Int32)">
+            <summary>
+            Creates an instance of the <see cref="T:CTrue.FsConnect.Managers.AircraftManager`1"/> class.
+            </summary>
+            <param name="fsConnect"></param>
+            <param name="defineId">The definition used when registering the aircraft information structure.</param>
+            <param name="requestId">The request Id to use when requesting data using the manager.</param>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.AircraftManager`1.#ctor(CTrue.FsConnect.IFsConnect,System.Enum,System.Enum)">
+            <summary>
+            Creates an instance of the <see cref="T:CTrue.FsConnect.Managers.AircraftManager`1"/> class.
+            </summary>
+            <param name="fsConnect"></param>
+            <param name="defineId">The definition used when registering the aircraft information structure.</param>
+            <param name="requestId">The request Id to use when requesting data using the manager.</param>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.AircraftManager`1.Get">
+            <inheritdoc />
+        </member>
+        <member name="T:CTrue.FsConnect.Managers.IAutoPilotManager">
+             <summary>
+             The <see cref="T:CTrue.FsConnect.Managers.IAutoPilotManager"/> controls the autopilot in the current aircraft.
+             </summary>
+             <remarks>
+             Supports:
+             - Get and set heading bug.
+            
+             Usage:
+             Call <see cref="!:Update"/> to refresh properties with latest values from MSFS.
+             </remarks>
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.IAutoPilotManager.HeadingBug">
+            <summary>
+            Gets the current heading bug, in degrees.
+            </summary>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.IAutoPilotManager.SetHeadingBug(System.Double)">
+            <summary>
+            Sets the autopilot heading bug, in degrees.
+            </summary>
+            <param name="heading"></param>
+        </member>
+        <member name="T:CTrue.FsConnect.Managers.AutopilotManager">
+            <inheritdoc />
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.AutopilotManager.HeadingBug">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.AutopilotManager.#ctor(CTrue.FsConnect.IFsConnect)">
+            <summary>
+            Creates a new <see cref="T:CTrue.FsConnect.Managers.AutopilotManager"/> instance.
+            </summary>
+            <param name="fsConnect"></param>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.AutopilotManager.Update">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.AutopilotManager.SetHeadingBug(System.Double)">
+            <inheritdoc />
+        </member>
+        <member name="T:CTrue.FsConnect.Managers.IRadioManager">
+             <summary>
+             The <see cref="T:CTrue.FsConnect.Managers.IRadioManager"/> controls the navigation and communication radios in the current aircraft.
+             </summary>
+             <remarks>
+             Supports:
+             - Get and set COM and NAV active and standby frequencies.
+             - Get and set transponder
+            
+             Usage:
+             Call <see cref="M:CTrue.FsConnect.Managers.IRadioManager.Update"/> to refresh properties with latest values from MSFS.
+             </remarks>
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.IRadioManager.Com1ActiveFrequency">
+            <summary>
+            Gets the COM1 Active frequency as returned from the last call with <see cref="M:CTrue.FsConnect.Managers.IRadioManager.Update"/>.
+            </summary>
+            <remarks>
+            The active frequency is changed by setting the COM1 standby frequency and calling <see cref="!:IRadioManager.COM1Swap()"/>
+            </remarks>
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.IRadioManager.Com1StandbyFrequency">
+            <summary>
+            Gets the COM1 Standby frequency as returned from the last call with <see cref="M:CTrue.FsConnect.Managers.IRadioManager.Update"/>.
+            </summary>
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.IRadioManager.Com2ActiveFrequency">
+            <summary>
+            Gets the COM2 Active frequency as returned from the last call with <see cref="M:CTrue.FsConnect.Managers.IRadioManager.Update"/>.
+            </summary>
+            <remarks>
+            The active frequency is changed by setting the COM2 standby frequency and calling <see cref="!:IRadioManager.COM2Swap()"/>
+            </remarks>
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.IRadioManager.Com2StandbyFrequency">
+            <summary>
+            Gets the COM2 Standby frequency as returned from the last call with <see cref="M:CTrue.FsConnect.Managers.IRadioManager.Update"/>.
+            </summary>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.IRadioManager.SetCom1StandbyFrequency(System.Double)">
+            <summary>
+            Sets the COM1 standby frequency.
+            </summary>
+            <param name="frequency">The frequency, in MHz, e.g. 124.100</param>
+            <remarks>
+            Range: 118.000 to 135.975Mhz
+            </remarks>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.IRadioManager.SetCom1ActiveFrequency(System.Double)">
+            <summary>
+            Sets the COM1 active frequency.
+            </summary>
+            <param name="frequency">The frequency, in MHz, e.g. 124.100</param>
+            <remarks>
+            Range: 118.000 to 135.975Mhz
+            </remarks>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.IRadioManager.SetCom2StandbyFrequency(System.Double)">
+            <summary>
+            Sets the COM2 standby frequency.
+            </summary>
+            <param name="frequency">The frequency, in MHz, e.g. 124.100</param>
+            <remarks>
+            Range: 118.000 to 135.975Mhz
+            </remarks>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.IRadioManager.SetCom2ActiveFrequency(System.Double)">
+            <summary>
+            Sets the COM2 active frequency.
+            </summary>
+            <param name="frequency">The frequency, in MHz, e.g. 124.10</param>
+            <remarks>
+            Range: 118.000 to 135.975Mhz
+            </remarks>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.IRadioManager.Com1Swap">
+            <summary>
+            Swaps COMS1 active and standby frequency.
+            </summary>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.IRadioManager.Com2Swap">
+            <summary>
+            Swaps COMS2 active and standby frequency.
+            </summary>
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.IRadioManager.Nav1ActiveFrequency">
+            <summary>
+            Gets the Nav1 Active frequency as returned from the last call with <see cref="M:CTrue.FsConnect.Managers.IRadioManager.Update"/>.
+            </summary>
+            <remarks>
+            The active frequency is changed by setting the Nav1 standby frequency and calling <see cref="M:CTrue.FsConnect.Managers.IRadioManager.Nav1Swap"/>
+            </remarks>
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.IRadioManager.Nav1StandbyFrequency">
+            <summary>
+            Gets the Nav1 Standby frequency as returned from the last call with <see cref="M:CTrue.FsConnect.Managers.IRadioManager.Update"/>.
+            </summary>
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.IRadioManager.Nav2ActiveFrequency">
+            <summary>
+            Gets the Nav2 Active frequency as returned from the last call with <see cref="M:CTrue.FsConnect.Managers.IRadioManager.Update"/>.
+            </summary>
+            <remarks>
+            The active frequency is changed by setting the Nav2 standby frequency and calling <see cref="M:CTrue.FsConnect.Managers.IRadioManager.Nav2Swap"/>
+            </remarks>
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.IRadioManager.Nav2StandbyFrequency">
+            <summary>
+            Gets the Nav2 Standby frequency as returned from the last call with <see cref="M:CTrue.FsConnect.Managers.IRadioManager.Update"/>.
+            </summary>
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.IRadioManager.TransponderCode">
+            <summary>
+            Gets the transponder code.
+            </summary>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.IRadioManager.SetNav1StandbyFrequency(System.Double)">
+            <summary>
+            Sets the Nav1 standby frequency.
+            </summary>
+            <param name="frequency">The frequency, in MHz, e.g. 124.100</param>
+            <remarks>
+            Range: 118.000 to 135.975Mhz
+            </remarks>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.IRadioManager.SetNav1ActiveFrequency(System.Double)">
+            <summary>
+            Sets the Nav1 active frequency.
+            </summary>
+            <param name="frequency">The frequency, in MHz, e.g. 124.100</param>
+            <remarks>
+            Range: 118.000 to 135.975Mhz
+            </remarks>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.IRadioManager.SetNav2StandbyFrequency(System.Double)">
+            <summary>
+            Sets the Nav2 standby frequency.
+            </summary>
+            <param name="frequency">The frequency, in MHz, e.g. 124.100</param>
+            <remarks>
+            Range: 118.000 to 135.975Mhz
+            </remarks>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.IRadioManager.SetNav2ActiveFrequency(System.Double)">
+            <summary>
+            Sets the Nav2 active frequency.
+            </summary>
+            <param name="frequency">The frequency, in MHz, e.g. 124.10</param>
+            <remarks>
+            Range: 118.000 to 135.975Mhz
+            </remarks>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.IRadioManager.Nav1Swap">
+            <summary>
+            Swaps NavS1 active and standby frequency.
+            </summary>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.IRadioManager.Nav2Swap">
+            <summary>
+            Swaps NavS2 active and standby frequency.
+            </summary>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.IRadioManager.SetTransponderCode(System.UInt32)">
+            <summary>
+            Sets the transponder code.
+            </summary>
+            <param name="code"></param>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.IRadioManager.Update">
+            <summary>
+            Request new radio data from MSFS.
+            </summary>
+            <remarks>
+            The call is blocked until an update is returned.
+            </remarks>
+        </member>
+        <member name="T:CTrue.FsConnect.Managers.RadioManager">
+            <inheritdoc />
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.RadioManager.Com1StandbyFrequency">
+            <inheritdoc />
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.RadioManager.Com1ActiveFrequency">
+            <inheritdoc />
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.RadioManager.Com2StandbyFrequency">
+            <inheritdoc />
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.RadioManager.Com2ActiveFrequency">
+            <inheritdoc />
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.RadioManager.Nav1StandbyFrequency">
+            <inheritdoc />
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.RadioManager.Nav1ActiveFrequency">
+            <inheritdoc />
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.RadioManager.Nav2StandbyFrequency">
+            <inheritdoc />
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.RadioManager.Nav2ActiveFrequency">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.RadioManager.#ctor(CTrue.FsConnect.IFsConnect)">
+            <summary>
+            Creates a new <see cref="T:CTrue.FsConnect.Managers.RadioManager"/> instance.
+            </summary>
+            <param name="fsConnect"></param>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.RadioManager.Update">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.RadioManager.SetCom1StandbyFrequency(System.Double)">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.RadioManager.SetCom1ActiveFrequency(System.Double)">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.RadioManager.SetCom2StandbyFrequency(System.Double)">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.RadioManager.SetCom2ActiveFrequency(System.Double)">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.RadioManager.Com1Swap">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.RadioManager.Com2Swap">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.RadioManager.SetNav1StandbyFrequency(System.Double)">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.RadioManager.SetNav1ActiveFrequency(System.Double)">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.RadioManager.SetNav2StandbyFrequency(System.Double)">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.RadioManager.SetNav2ActiveFrequency(System.Double)">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.RadioManager.Nav1Swap">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.RadioManager.Nav2Swap">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.RadioManager.SetTransponderCode(System.UInt32)">
+            <inheritdoc />
+        </member>
+        <member name="T:CTrue.FsConnect.Managers.ISimObjectManager`1">
+            <summary>
+            The <see cref="T:CTrue.FsConnect.Managers.SimObjectManager`1"/> is a simple way to request information about Sim Objects in Microsoft Flight Simulator
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.ISimObjectManager`1.Radius">
+            <summary>
+            Gets or sets the radius, in meters relative to the user position, to get Sim Objects.
+            </summary>
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.ISimObjectManager`1.SimObjectType">
+            <summary>
+            Gets or sets the type of Sim Object to get from flight simulator.
+            </summary>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.ISimObjectManager`1.GetById(System.UInt32)">
+            <summary>
+            Gets a Sim Object by its Object Id.
+            </summary>
+            <param name="objectId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.ISimObjectManager`1.GetDictionary">
+            <summary>
+            Gets a dictionary of Sim Objects, containing the Object Id and instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.ISimObjectManager`1.GetList">
+            <summary>
+            Gets the current list of known Sim Objects.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.ISimObjectManager`1.GetWithRequest">
+            <summary>
+            Gets the current list of known Sim Objects by waiting for all items before returning.
+            </summary>
+            <returns>A list of sim objects.</returns>
+            <remarks>Note: The current sim objects list is cleared.</remarks>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.ISimObjectManager`1.Request">
+            <summary>
+            Starts an asynchronous request for Sim Objects.
+            </summary>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.ISimObjectManager`1.Clear">
+            <summary>
+            Clears the list of known Sim Objects.
+            </summary>
+        </member>
+        <member name="T:CTrue.FsConnect.Managers.SimObjectManager`1">
+            <inheritdoc />
+        </member>
+        <member name="P:CTrue.FsConnect.Managers.SimObjectManager`1.Radius">
+            <summary>
+            Gets or sets the radius, in meters relative to the user position, to get Sim Objects.
+            </summary>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.SimObjectManager`1.#ctor(CTrue.FsConnect.IFsConnect,System.Enum,System.Enum)">
+            <summary>
+            Creates a <see cref="T:CTrue.FsConnect.Managers.SimObjectManager`1"/> instance.
+            </summary>
+            <param name="fsConnect"></param>
+            <param name="defineId"></param>
+            <param name="requestId"></param>
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.SimObjectManager`1.GetById(System.UInt32)">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.SimObjectManager`1.GetList">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.SimObjectManager`1.GetDictionary">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.SimObjectManager`1.GetWithRequest">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.SimObjectManager`1.Request">
+            <inheritdoc />
+        </member>
+        <member name="M:CTrue.FsConnect.Managers.SimObjectManager`1.Clear">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
