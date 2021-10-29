@@ -40,6 +40,9 @@ namespace YASAP
         int planeInfoDefinitionId;
         PlaneInfoResponse responses;
         bool labelsmade = false;
+        List<SimVar> definition = new List<SimVar>();
+        
+        
         public enum Requests
         {
             PlaneInfoRequest = 0
@@ -50,20 +53,8 @@ namespace YASAP
         {
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
             public String Title;
-            [SimVar(UnitId = FsUnit.Degree)]
-            public double PlaneLatitude;
-            [SimVar(UnitId = FsUnit.Degree)]
-            public double PlaneLongitude;
-            [SimVar(UnitId = FsUnit.Feet)]
-            public double PlaneAltitude;
-            [SimVar(UnitId = FsUnit.Degree)]
-            public double PlaneHeadingDegreesTrue;
-            [SimVar(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.MeterPerSecond)]
-            public double AirspeedTrueInMeterPerSecond;
-            [SimVar(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.Knot)]
-            public double AirspeedTrueInKnot;
-            [SimVar(NameId = FsSimVar.BrakeIndicator, UnitId = FsUnit.Bool)]
-            public bool BrakeIndicator;
+ 
+            
         }
 
         public Form1()
@@ -76,8 +67,8 @@ namespace YASAP
         {
 
             fillComboBoxes();
-
-
+            
+            
         }
 
         #region Arduino
@@ -426,18 +417,46 @@ namespace YASAP
                     return;
                 }
                 fsConnect.FsDataReceived += FsConnect_FsDataReceived;
-                planeInfoDefinitionId = fsConnect.RegisterDataDefinition<PlaneInfoResponse>();
+                //planeInfoDefinitionId = fsConnect.RegisterDataDefinition<PlaneInfoResponse>();
                 fsConnect.SimStateChanged += FsConnect_SimStateChanged;
+                fsConnect.AircraftLoaded += FsConnect_AircraftLoaded;
+                fsConnect.Crashed += FsConnect_Crashed;
+                fsConnect.FlightLoaded += FsConnect_FlightLoaded;
                 timer1.Enabled = true;
                 fsConnect_btn.Text = "Disconnect";
                 statusSimConnect_label.Text = "Simulator Connected";
                 statusSimConnect_label.ForeColor = Color.Green;
-               
-            }
-            
+                GetSimVars();
+                
 
-           
+            }
+   
+        }
+
+        private void RegisterDefinitions()
+        {
+           // definition.Add(new SimVar("Title", null, Microsoft.FlightSimulator.SimConnect.SIMCONNECT_DATATYPE.STRING256));
+            fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Requests.PlaneInfoRequest, definition);
+        }
+
+        private void AddDefinitionToData(FsSimVar var)
+        {
             
+        }
+
+        private void FsConnect_FlightLoaded(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void FsConnect_Crashed(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void FsConnect_AircraftLoaded(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void DisconnectFS()
@@ -453,6 +472,47 @@ namespace YASAP
             }
         }
 
+        private void GetSimVars()
+        {
+            foreach (var t in Enum.GetValues(typeof(FsSimVar)))
+            {
+                simVar_ComboBox.Items.Add(t);
+                //Debug.WriteLine(t.ToString());
+            }
+            simVar_ComboBox.Visible = true;
+            simVar_ComboBox.SelectedIndex = 0;
+
+            foreach (var t in Enum.GetValues(typeof(FsUnit)))
+            {
+                simVarUnits_combo.Items.Add(t);
+                //Debug.WriteLine(t.ToString());
+            }
+            simVarUnits_combo.Visible = true;
+            simVarUnits_combo.SelectedIndex = 0;
+
+
+            foreach (var s in Enum.GetValues(typeof(Microsoft.FlightSimulator.SimConnect.SIMCONNECT_DATATYPE)))
+            {
+                simVarDataType_combo.Items.Add(s);
+                simVarDataType_combo.Visible = true;
+                simVarDataType_combo.SelectedIndex = 0;
+            }
+
+            simVarAdd_button.Visible = true;
+          
+        }
+
+        private void simVarAdd_button_Click(object sender, EventArgs e)
+        {
+            
+            definition.Add(new SimVar((FsSimVar)simVar_ComboBox.SelectedItem, (FsUnit)simVarUnits_combo.SelectedItem, (Microsoft.FlightSimulator.SimConnect.SIMCONNECT_DATATYPE)simVarDataType_combo.SelectedItem));
+        }
+
+
+        private void registerVars_button_Click(object sender, EventArgs e)
+        {
+            RegisterDefinitions();
+        }
         private void FsConnect_SimStateChanged(object sender, SimStateChangedEventArgs e)
         {
             simState = e.Running;
@@ -478,7 +538,7 @@ namespace YASAP
             {
                 PlaneInfoResponse r = (PlaneInfoResponse)e.Data.FirstOrDefault();
                 responses = r;
-                Debug.WriteLine($"{r.PlaneLatitude:F4} {r.PlaneLongitude:F4} {r.PlaneAltitude:F1}ft {r.PlaneHeadingDegreesTrue:F1}deg {r.AirspeedTrueInMeterPerSecond:F0}m/s {r.AirspeedTrueInKnot:F0}kt  {r.BrakeIndicator.ToString()}");
+              //  Debug.WriteLine($"{r.PlaneLatitude:F4} {r.PlaneLongitude:F4} {r.PlaneAltitude:F1}ft {r.PlaneHeadingDegreesTrue:F1}deg {r.AirspeedTrueInMeterPerSecond:F0}m/s {r.AirspeedTrueInKnot:F0}kt  {r.BrakeIndicator.ToString()}");
 
                 foreach (FieldInfo n in typeof(PlaneInfoResponse).GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public))
                 {
@@ -654,6 +714,7 @@ namespace YASAP
         {
             changeStyle((MetroColorStyle)style_comboBox.SelectedItem);
         }
+
         #endregion
 
     }

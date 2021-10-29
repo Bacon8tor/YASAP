@@ -42,6 +42,5 @@ E:\Nextcloud\Documents\Projects\YASAP\YASAP-GIT\YASAP\YASAP\obj\x64\Debug\YASAP.
 E:\Nextcloud\Documents\Projects\YASAP\YASAP-GIT\YASAP\YASAP\obj\x64\Debug\YASAP.simVar_UC.resources
 E:\Nextcloud\Documents\Projects\YASAP\YASAP-GIT\YASAP\YASAP\obj\x64\Debug\YASAP.csproj.GenerateResource.cache
 E:\Nextcloud\Documents\Projects\YASAP\YASAP-GIT\YASAP\YASAP\obj\x64\Debug\YASAP.csproj.CoreCompileInputs.cache
-E:\Nextcloud\Documents\Projects\YASAP\YASAP-GIT\YASAP\YASAP\obj\x64\Debug\YASAP.csproj.CopyComplete
 E:\Nextcloud\Documents\Projects\YASAP\YASAP-GIT\YASAP\YASAP\obj\x64\Debug\YASAP.exe
 E:\Nextcloud\Documents\Projects\YASAP\YASAP-GIT\YASAP\YASAP\obj\x64\Debug\YASAP.pdb

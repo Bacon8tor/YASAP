@@ -37,6 +37,10 @@ namespace YASAP
             this.simConnect_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.simConnectInfo_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.fsConnect_btn = new MetroFramework.Controls.MetroButton();
+            this.simVar_ComboBox = new MetroFramework.Controls.MetroComboBox();
+            this.simVarUnits_combo = new MetroFramework.Controls.MetroComboBox();
+            this.simVarDataType_combo = new MetroFramework.Controls.MetroComboBox();
+            this.simVarAdd_button = new MetroFramework.Controls.MetroButton();
             this.vJoy_tab = new MetroFramework.Controls.MetroTabPage();
             this.vJoyInfo_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -61,6 +65,7 @@ namespace YASAP
             this.statusvJoy_label = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusArduino_label = new System.Windows.Forms.ToolStripStatusLabel();
+            this.registerVars_button = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.msm)).BeginInit();
             this.main_tabControl.SuspendLayout();
             this.simConnect_tab.SuspendLayout();
@@ -92,7 +97,7 @@ namespace YASAP
             this.main_tabControl.Location = new System.Drawing.Point(20, 60);
             this.main_tabControl.Margin = new System.Windows.Forms.Padding(3, 3, 3, 50);
             this.main_tabControl.Name = "main_tabControl";
-            this.main_tabControl.SelectedIndex = 3;
+            this.main_tabControl.SelectedIndex = 0;
             this.main_tabControl.Size = new System.Drawing.Size(803, 459);
             this.main_tabControl.TabIndex = 0;
             this.main_tabControl.UseSelectable = true;
@@ -106,7 +111,7 @@ namespace YASAP
             this.simConnect_tab.HorizontalScrollbarSize = 0;
             this.simConnect_tab.Location = new System.Drawing.Point(4, 38);
             this.simConnect_tab.Name = "simConnect_tab";
-            this.simConnect_tab.Size = new System.Drawing.Size(795, 419);
+            this.simConnect_tab.Size = new System.Drawing.Size(795, 417);
             this.simConnect_tab.TabIndex = 1;
             this.simConnect_tab.Text = "SimConnect";
             this.simConnect_tab.VerticalScrollbarBarColor = false;
@@ -120,18 +125,23 @@ namespace YASAP
             this.simConnect_panel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.simConnect_panel.Location = new System.Drawing.Point(203, 0);
             this.simConnect_panel.Name = "simConnect_panel";
-            this.simConnect_panel.Size = new System.Drawing.Size(592, 419);
+            this.simConnect_panel.Size = new System.Drawing.Size(592, 417);
             this.simConnect_panel.TabIndex = 5;
             // 
             // simConnectInfo_panel
             // 
             this.simConnectInfo_panel.BackColor = System.Drawing.Color.Transparent;
             this.simConnectInfo_panel.Controls.Add(this.fsConnect_btn);
+            this.simConnectInfo_panel.Controls.Add(this.simVar_ComboBox);
+            this.simConnectInfo_panel.Controls.Add(this.simVarUnits_combo);
+            this.simConnectInfo_panel.Controls.Add(this.simVarDataType_combo);
+            this.simConnectInfo_panel.Controls.Add(this.simVarAdd_button);
+            this.simConnectInfo_panel.Controls.Add(this.registerVars_button);
             this.simConnectInfo_panel.Dock = System.Windows.Forms.DockStyle.Left;
             this.simConnectInfo_panel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.simConnectInfo_panel.Location = new System.Drawing.Point(0, 0);
             this.simConnectInfo_panel.Name = "simConnectInfo_panel";
-            this.simConnectInfo_panel.Size = new System.Drawing.Size(203, 419);
+            this.simConnectInfo_panel.Size = new System.Drawing.Size(203, 417);
             this.simConnectInfo_panel.TabIndex = 4;
             // 
             // fsConnect_btn
@@ -144,6 +154,50 @@ namespace YASAP
             this.fsConnect_btn.UseSelectable = true;
             this.fsConnect_btn.Click += new System.EventHandler(this.fsConnect_btn_Click);
             // 
+            // simVar_ComboBox
+            // 
+            this.simVar_ComboBox.FormattingEnabled = true;
+            this.simVar_ComboBox.ItemHeight = 23;
+            this.simVar_ComboBox.Location = new System.Drawing.Point(3, 47);
+            this.simVar_ComboBox.Name = "simVar_ComboBox";
+            this.simVar_ComboBox.Size = new System.Drawing.Size(194, 29);
+            this.simVar_ComboBox.TabIndex = 3;
+            this.simVar_ComboBox.UseSelectable = true;
+            this.simVar_ComboBox.Visible = false;
+            // 
+            // simVarUnits_combo
+            // 
+            this.simVarUnits_combo.FormattingEnabled = true;
+            this.simVarUnits_combo.ItemHeight = 23;
+            this.simVarUnits_combo.Location = new System.Drawing.Point(3, 82);
+            this.simVarUnits_combo.Name = "simVarUnits_combo";
+            this.simVarUnits_combo.Size = new System.Drawing.Size(194, 29);
+            this.simVarUnits_combo.TabIndex = 6;
+            this.simVarUnits_combo.UseSelectable = true;
+            this.simVarUnits_combo.Visible = false;
+            // 
+            // simVarDataType_combo
+            // 
+            this.simVarDataType_combo.FormattingEnabled = true;
+            this.simVarDataType_combo.ItemHeight = 23;
+            this.simVarDataType_combo.Location = new System.Drawing.Point(3, 117);
+            this.simVarDataType_combo.Name = "simVarDataType_combo";
+            this.simVarDataType_combo.Size = new System.Drawing.Size(194, 29);
+            this.simVarDataType_combo.TabIndex = 5;
+            this.simVarDataType_combo.UseSelectable = true;
+            this.simVarDataType_combo.Visible = false;
+            // 
+            // simVarAdd_button
+            // 
+            this.simVarAdd_button.Location = new System.Drawing.Point(3, 152);
+            this.simVarAdd_button.Name = "simVarAdd_button";
+            this.simVarAdd_button.Size = new System.Drawing.Size(194, 23);
+            this.simVarAdd_button.TabIndex = 4;
+            this.simVarAdd_button.Text = "add Sim Variable";
+            this.simVarAdd_button.UseSelectable = true;
+            this.simVarAdd_button.Visible = false;
+            this.simVarAdd_button.Click += new System.EventHandler(this.simVarAdd_button_Click);
+            // 
             // vJoy_tab
             // 
             this.vJoy_tab.Controls.Add(this.vJoyInfo_panel);
@@ -152,7 +206,7 @@ namespace YASAP
             this.vJoy_tab.HorizontalScrollbarSize = 10;
             this.vJoy_tab.Location = new System.Drawing.Point(4, 38);
             this.vJoy_tab.Name = "vJoy_tab";
-            this.vJoy_tab.Size = new System.Drawing.Size(795, 419);
+            this.vJoy_tab.Size = new System.Drawing.Size(795, 417);
             this.vJoy_tab.TabIndex = 2;
             this.vJoy_tab.Text = "vJoy";
             this.vJoy_tab.VerticalScrollbarBarColor = true;
@@ -168,7 +222,7 @@ namespace YASAP
             this.vJoyInfo_panel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.vJoyInfo_panel.Location = new System.Drawing.Point(0, 0);
             this.vJoyInfo_panel.Name = "vJoyInfo_panel";
-            this.vJoyInfo_panel.Size = new System.Drawing.Size(200, 419);
+            this.vJoyInfo_panel.Size = new System.Drawing.Size(200, 417);
             this.vJoyInfo_panel.TabIndex = 4;
             // 
             // metroLabel1
@@ -198,7 +252,7 @@ namespace YASAP
             this.arduino_tab.HorizontalScrollbarSize = 10;
             this.arduino_tab.Location = new System.Drawing.Point(4, 38);
             this.arduino_tab.Name = "arduino_tab";
-            this.arduino_tab.Size = new System.Drawing.Size(795, 419);
+            this.arduino_tab.Size = new System.Drawing.Size(795, 417);
             this.arduino_tab.TabIndex = 3;
             this.arduino_tab.Text = "Arduino";
             this.arduino_tab.VerticalScrollbarBarColor = true;
@@ -219,7 +273,7 @@ namespace YASAP
             this.arduinoConnect_fp.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.arduinoConnect_fp.Location = new System.Drawing.Point(0, 0);
             this.arduinoConnect_fp.Name = "arduinoConnect_fp";
-            this.arduinoConnect_fp.Size = new System.Drawing.Size(200, 419);
+            this.arduinoConnect_fp.Size = new System.Drawing.Size(200, 417);
             this.arduinoConnect_fp.TabIndex = 5;
             // 
             // metroLabel2
@@ -402,6 +456,16 @@ namespace YASAP
             this.statusArduino_label.Size = new System.Drawing.Size(134, 17);
             this.statusArduino_label.Text = "Arduino Not Connected";
             // 
+            // registerVars_button
+            // 
+            this.registerVars_button.Location = new System.Drawing.Point(3, 181);
+            this.registerVars_button.Name = "registerVars_button";
+            this.registerVars_button.Size = new System.Drawing.Size(194, 23);
+            this.registerVars_button.TabIndex = 7;
+            this.registerVars_button.Text = "Register Vars with Sim";
+            this.registerVars_button.UseSelectable = true;
+            this.registerVars_button.Click += new System.EventHandler(this.registerVars_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -469,5 +533,10 @@ namespace YASAP
         private System.Windows.Forms.ToolStripStatusLabel statusvJoy_label;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel statusArduino_label;
+        private MetroFramework.Controls.MetroComboBox simVar_ComboBox;
+        private MetroFramework.Controls.MetroButton simVarAdd_button;
+        private MetroFramework.Controls.MetroComboBox simVarDataType_combo;
+        private MetroFramework.Controls.MetroComboBox simVarUnits_combo;
+        private MetroFramework.Controls.MetroButton registerVars_button;
     }
 }
