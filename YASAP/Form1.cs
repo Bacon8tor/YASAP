@@ -499,7 +499,7 @@ namespace YASAP
             }
 
             simVarAdd_button.Visible = true;
-          
+            registerVars_button.Visible = true;
         }
 
         private void simVarAdd_button_Click(object sender, EventArgs e)

@@ -41,6 +41,7 @@ namespace YASAP
             this.simVarUnits_combo = new MetroFramework.Controls.MetroComboBox();
             this.simVarDataType_combo = new MetroFramework.Controls.MetroComboBox();
             this.simVarAdd_button = new MetroFramework.Controls.MetroButton();
+            this.registerVars_button = new MetroFramework.Controls.MetroButton();
             this.vJoy_tab = new MetroFramework.Controls.MetroTabPage();
             this.vJoyInfo_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -65,7 +66,6 @@ namespace YASAP
             this.statusvJoy_label = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusArduino_label = new System.Windows.Forms.ToolStripStatusLabel();
-            this.registerVars_button = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.msm)).BeginInit();
             this.main_tabControl.SuspendLayout();
             this.simConnect_tab.SuspendLayout();
@@ -197,6 +197,17 @@ namespace YASAP
             this.simVarAdd_button.UseSelectable = true;
             this.simVarAdd_button.Visible = false;
             this.simVarAdd_button.Click += new System.EventHandler(this.simVarAdd_button_Click);
+            // 
+            // registerVars_button
+            // 
+            this.registerVars_button.Location = new System.Drawing.Point(3, 181);
+            this.registerVars_button.Name = "registerVars_button";
+            this.registerVars_button.Size = new System.Drawing.Size(194, 23);
+            this.registerVars_button.TabIndex = 7;
+            this.registerVars_button.Text = "Register Vars with Sim";
+            this.registerVars_button.UseSelectable = true;
+            this.registerVars_button.Visible = false;
+            this.registerVars_button.Click += new System.EventHandler(this.registerVars_button_Click);
             // 
             // vJoy_tab
             // 
@@ -455,16 +466,6 @@ namespace YASAP
             this.statusArduino_label.Name = "statusArduino_label";
             this.statusArduino_label.Size = new System.Drawing.Size(134, 17);
             this.statusArduino_label.Text = "Arduino Not Connected";
-            // 
-            // registerVars_button
-            // 
-            this.registerVars_button.Location = new System.Drawing.Point(3, 181);
-            this.registerVars_button.Name = "registerVars_button";
-            this.registerVars_button.Size = new System.Drawing.Size(194, 23);
-            this.registerVars_button.TabIndex = 7;
-            this.registerVars_button.Text = "Register Vars with Sim";
-            this.registerVars_button.UseSelectable = true;
-            this.registerVars_button.Click += new System.EventHandler(this.registerVars_button_Click);
             // 
             // Form1
             // 
